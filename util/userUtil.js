@@ -5,6 +5,7 @@ const User=require('../models/user.model')
 
 const existsUser=async()=>{
     const users=await User.find()
+
     for (const object of users) {
         console.log(object.surname)
     }
