@@ -29,7 +29,8 @@ router.get('/getPost/:id',async(req,res)=>{
         date : response.date,
         time : response.time,
         title : response.title,
-        body : buffer
+        body :res.send(buffer)
+               
      })
 
 

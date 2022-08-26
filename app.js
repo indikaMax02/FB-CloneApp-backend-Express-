@@ -1,7 +1,9 @@
 const express=require('express');
 const mongoose=require('mongoose')
+const session=require('./routes/session')
 const user=require('./routes/user')
 const post=require('./routes/post')
+const auth = require('./middleware/auth')
 
 const app=express()
 const port=4000;
@@ -15,7 +17,8 @@ con.on("open",()=>{
 
 
 app.use(express.json())
-app.use('/user',user)
+app.use('/session',session)
+app.use('/user',auth,user)
 app.use('/post',post)
 
 
