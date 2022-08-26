@@ -10,7 +10,7 @@ router.post('/login',async(req,res)=>{
                    res.json({code:'500',message:'login faild',data:null})
 
 })
-gbfgbfg
+gbfgbfgbnhgnhgnhgnhgnghnghn
 
 router.put('/updateProfile/:email' ,async(req,res)=>{
   const response= await User.findOneAndUpdate({email : req.params.email} , req.body)
