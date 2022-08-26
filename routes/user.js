@@ -2,6 +2,8 @@ const express=require('express')
 const router=express.Router()
 const User=require('../models/user.model')
 
+
+
 router.post('/login',async(req,res)=>{
    const response= await User.findOne({email : req.body.email , password : req.body.password});
    response!=null ? res.json({code:'200',message:'login  successfull',data:response.surname}) : 
