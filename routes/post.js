@@ -2,8 +2,15 @@ const express=require('express')
 const router=express.Router()
 const Post=require('../models/post.model')
 
+const encode=require('node-base64-image').encode
+const decode=require('node-base64-image').decode
+
+
 var multiparty = require('multiparty');
 const fs = require("fs");
+const Jimp = require("jimp");
+const { Binary } = require('mongodb')
+const path = require('path')
 
 
 router.delete('/deletePost/:id',async(req,res)=>{
@@ -12,6 +19,22 @@ router.delete('/deletePost/:id',async(req,res)=>{
                   res.json({code:'500',message:'delete post Faild',data:null})
 })
 
+router.get('/getPost/:id',async(req,res)=>{
+  const response= await Post.findOne({_id: req.params.id})
+    var image = response.body.toString('base64');
+  const buffer = Buffer.from(image, 'base64');
+
+
+     res.json({
+        date : response.date,
+        time : response.time,
+        title : response.title,
+        body : buffer
+     })
+
+
+})
+   
 
 router.post('/createPost',async(req,res)=>{
 
