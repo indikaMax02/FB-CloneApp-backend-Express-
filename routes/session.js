@@ -14,7 +14,6 @@ router.post('/login',async(req,res)=>{
     array.push(refreshToken)
     res.send({accessToken,refreshToken});
    }
-   
  })
 
  router.post('/token',(req,res)=>{
